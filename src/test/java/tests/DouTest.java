@@ -22,7 +22,7 @@ public class DouTest extends TestBase {
                 .shouldSeeSelectedCity("Киев")
                 .shouldSeeSelectedJob("Project manager")
                 .shouldSeeSelectedPeriod("декабрь 2011")
-                .shouldSeeMaxSalary("$3000");
+                .shouldSeeMaxSalary("3000");
     }
 
     @Test
@@ -34,6 +34,36 @@ public class DouTest extends TestBase {
                 .openCompanyPage("CloudBees")
                 .clickOnCompanyWebsiteAndVerifyTitle("CloudBees | Enterprise Jenkins and DevOps");
 
+    }
+
+    @Test
+    public void jsseMaxSalary3yearsExperience() {
+        new MainPage().open()
+                .navigateByClickingOnHeaderTab(new SalariesPage(), Tabs.SALARIES)
+                .setCity("вся Украина")
+                .setJobPosition("Senior Software Engineer")
+                .setProgrammingLanguage("Java")
+                .setSlider(3, 3)
+                .shouldSeeSelectedCity("вся Украина")
+                .shouldSeeSelectedJob("Senior Software Engineer")
+                .shouldSeeSelectedLanguage("Java")
+                .shouldSeeThatSliderIsSetCorrectly("left: 30%; width: 0%;")
+                .shouldSeeMaxSalary("4000");
+    }
+
+    @Test
+    public void jsseAverageSalaryFrom2to5yearsExperience() {
+        new MainPage().open()
+                .navigateByClickingOnHeaderTab(new SalariesPage(), Tabs.SALARIES)
+                .setCity("вся Украина")
+                .setJobPosition("Senior Software Engineer")
+                .setProgrammingLanguage("Java")
+                .setSlider(2, 5)
+                .shouldSeeSelectedCity("вся Украина")
+                .shouldSeeSelectedJob("Senior Software Engineer")
+                .shouldSeeSelectedLanguage("Java")
+                .shouldSeeThatSliderIsSetCorrectly("left: 20%; width: 30%;")
+                .shouldSeeAvgSalary("3500");
     }
 
     @BeforeMethod(alwaysRun = true)

@@ -9,7 +9,7 @@ public enum Tabs {
     CALENDAR("Календарь"),
     JOBS("Вакансии"),
     TRENDS("Тренды"),
-    COMPANIES("Компнии"),
+    COMPANIES("Компании"),
     RATINGS("Рейтинг"),
     TOP_50("Топ-50"),
     REVIEWS("Отзывы")

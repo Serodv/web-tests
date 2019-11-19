@@ -18,7 +18,7 @@ public class CompaniesPage extends MainPage {
     private SelenideElement searchInput = $("input[class='company']");
 
     public CompaniesPage searchCompany (String companyName) {
-        searchInput.setValue(companyName);
+        searchInput.setValue(companyName).pressEnter();
         $$(".l-items > li[class='l-company'] .cn-a").first().shouldHave(Condition.exactText(companyName));
         return this;
     }
